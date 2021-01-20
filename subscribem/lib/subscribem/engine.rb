@@ -7,6 +7,7 @@ module Subscribem
     end
 
     require 'warden'
+    require 'dynamic_form'
     initializer "subscribem.middleware.warden" do
       Rails.application.config.middleware.use Warden::Manager do |manager|
         manager.serialize_into_session do |user|

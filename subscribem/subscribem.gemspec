@@ -32,4 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "capybara"
   spec.add_dependency "bcrypt"
   spec.add_dependency "warden"
+  spec.add_dependency "dynamic_form"
 end
