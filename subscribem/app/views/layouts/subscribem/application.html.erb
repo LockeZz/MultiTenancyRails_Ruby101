@@ -13,6 +13,11 @@
   <% flash.each do |k, v| %>
     < class='flash <%= k %>'><%= v %></div>
   <% end %>
+
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>
+  <% end %>
+
   <%= yield %>
 
 </body>
