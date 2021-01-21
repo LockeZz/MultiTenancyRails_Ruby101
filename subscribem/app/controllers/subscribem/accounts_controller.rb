@@ -15,9 +15,7 @@ module Subscribem
     def create 
       @account = Subscribem::Account.create_with_owner(account_params)
       if @account.valid? 
-        request.env["warden"].set_user(@account.owner, :scope => :user)
-        # then reach out to warden again to have the owner created store inside account
-        request.env["warden"].set_user(@account, :scope => :account)
+        force_authentication!(@account, @account.owner)
         flash[:success] = "Your account has been successfully created."
         redirect_to subscribem.root_url(:subdomain => @account.subdomain)
       else
