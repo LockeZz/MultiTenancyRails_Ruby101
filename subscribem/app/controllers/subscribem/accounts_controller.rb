@@ -13,8 +13,8 @@ module Subscribem
     end
 
     def create 
-      @account = Subscribem::Account.new(account_params)
-      if @account.save 
+      @account = Subscribem::Account.create_with_owner(account_params)
+      if @account.valid? 
         request.env["warden"].set_user(@account.owner, :scope => :user)
         # then reach out to warden again to have the owner created store inside account
         request.env["warden"].set_user(@account, :scope => :account)

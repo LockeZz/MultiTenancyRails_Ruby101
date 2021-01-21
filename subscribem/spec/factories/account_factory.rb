@@ -6,6 +6,9 @@ FactoryBot.define do
         sequence :subdomain do |n| 
             "test#{n}"    
         end
-        association :owner, factory: :user
+        association :owner, :factory => :user
+        after(:create) do |account|
+            account.users << account.owner
+        end
     end
 end
