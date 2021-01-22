@@ -4,7 +4,7 @@ require "subdomain_helpers"
 feature "User sign in" do
     extend SubdomainHelpers
 
-    let!(:account) {FactoryBot.create(:account)}
+    let!(:account) {FactoryBot.create(:account_with_schema)}
     let(:sign_in_url) { "http://#{account.subdomain}.example.com/sign_in"}
     let(:root_url) { "http://#{account.subdomain}.example.com/"}
     within_account_subdomain do
