@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", "~> 5.2.4", ">= 5.2.4.4"
 
-  spec.add_development_dependency "sqlite3"
+  spec.add_dependency "pg"
   spec.add_development_dependency "rspec-rails" 
   spec.add_development_dependency "capybara"
   spec.add_development_dependency "factory_bot_rails"
@@ -35,4 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "bcrypt"
   spec.add_dependency "warden"
   spec.add_dependency "dynamic_form"
+  spec.add_dependency "apartment"
 end

@@ -10,6 +10,8 @@ module Subscribem
 
     require 'warden'
     require 'dynamic_form'
+    require 'apartment'
+    
     initializer "subscribem.middleware.warden" do
       Rails.application.config.middleware.use Warden::Manager do |manager|
         manager.default_strategies :password
