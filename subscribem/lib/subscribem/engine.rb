@@ -1,5 +1,5 @@
 # require 'subscribem/active_record_extensions'
-require 'apartment/elevators/subdomain'
+# require 'apartment/elevators/subdomain'
 
 module Subscribem
   class Engine < ::Rails::Engine
@@ -11,10 +11,16 @@ module Subscribem
 
     require 'warden'
     require 'dynamic_form'
-    require 'apartment'
+    require 'houser'
+    # require 'apartment'
 
-    initializer "subscribem.middleware.apartment" do 
-      Rails.application.config.middleware.use Apartment::Elevators::Subdomain
+    # initializer "subscribem.middleware.apartment" do 
+    #   Rails.application.config.middleware.use Apartment::Elevators::Subdomain
+    # end
+
+    initializer "subscribem.middleware.house" do
+      Rails.application.config.middleware.use Houser::Middleware,
+        :class_name => 'Subscribem::Account'
     end
 
     initializer "subscribem.middleware.warden" do

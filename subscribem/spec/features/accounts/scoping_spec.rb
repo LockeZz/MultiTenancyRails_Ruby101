@@ -1,16 +1,22 @@
 require "rails_helper"
 
 feature "Account scoping" do
-    let!(:account_a) {FactoryBot.create(:account_with_schema)}
-    let!(:account_b) {FactoryBot.create(:account_with_schema)}
+    let!(:account_a) {FactoryBot.create(:account)}
+    # let!(:account_a) {FactoryBot.create(:account_with_schema)}
+    # let!(:account_b) {FactoryBot.create(:account_with_schema)}
+
+    let!(:account_b) {FactoryBot.create(:account)}
     before do 
-        Apartment::Tenant.switch(account_a.subdomain) do
-            Thing.create(:name => "Account A's Thing")
-        end
-        Apartment::Tenant.switch(account_b.subdomain) do
-            Thing.create(:name => "Account B's Thing")
-        end
-        Apartment::Tenant.reset
+        # Apartment::Tenant.switch(account_a.subdomain) do
+        #     Thing.create(:name => "Account A's Thing")
+        # end
+        Thing.scoped_to(account_a).create(:name => "Account A's Thing")
+        # Apartment::Tenant.switch(account_b.subdomain) do
+        #     Thing.create(:name => "Account B's Thing")
+        # end
+        Thing.scoped_to(account_b).create(:name => "Account B's Thing")
+
+        # Apartment::Tenant.reset
     end
     scenario "displays only account A's records" do
         sign_in_as(:user => account_a.owner, :account => account_a)

@@ -36,5 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "bcrypt"
   spec.add_dependency "warden"
   spec.add_dependency "dynamic_form"
-  spec.add_dependency "apartment"
+  # spec.add_dependency "apartment"
+  spec.add_dependency "houser"
 end

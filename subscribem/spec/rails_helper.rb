@@ -6,7 +6,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'factory_bot_rails'
 require 'authentication_helpers'
-require 'apartment'
+# require 'apartment'
 require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -44,7 +44,7 @@ RSpec.configure do |config|
     schemas.each do |query|
       connection.query(query.values.first)
     end
-    Apartment::Tenant.reset
+    # Apartment::Tenant.reset
     DatabaseCleaner.clean
   end
 
